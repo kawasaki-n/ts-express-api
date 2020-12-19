@@ -1,14 +1,19 @@
-import StatusCodes from 'http-status-codes';
+import cors from 'cors';
 import { Request, Response, Router } from 'express';
+import StatusCodes from 'http-status-codes';
+
 import BookDao from '@daos/Book/BookDao';
 import { paramMissingError } from '@shared/constants';
-import cors from 'cors';
 
 const router = Router();
 const bookDao = new BookDao();
 const { BAD_REQUEST, CREATED, OK } = StatusCodes;
 
-router.use(cors());
+router.use(cors({
+    origin: process.env.FRONTEND_ORIGIN,
+    credentials: true,
+    optionsSuccessStatus: 200,
+}));
 
 router.get('/all', async (req: Request, res: Response) => {
     const books = await bookDao.getAll();
