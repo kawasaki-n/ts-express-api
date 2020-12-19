@@ -21,8 +21,9 @@ router.get('/all', async (req: Request, res: Response) => {
     return res.status(OK).json({books});
 })
 
+// curl -X POST -H "Content-Type: application/json" -d '{"name":"hoge", "author":"kawasaki", "url":"http://google.com"}' http://localhost:8080/api/books/add
 router.post('/add', async (req: Request, res: Response) => {
-    const { book } = req.body;
+    const book = req.body;
     if (!book) {
         return res.status(BAD_REQUEST).json({
             "message": paramMissingError
@@ -36,9 +37,14 @@ router.post('/add', async (req: Request, res: Response) => {
     });
 })
 
+// curl -X DELETE http://localhost:8080/api/books/delete/{id}
 router.delete("/delete/:id", async (req: Request, res: Response) => {
     const { id } = req.params;
     await bookDao.delete(Number(id));
+    return res.status(OK).json({
+        deletedId: id,
+        message: "Success to delete!"
+    });
 })
 
 
