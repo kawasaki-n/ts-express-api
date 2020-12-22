@@ -6,8 +6,7 @@
     "lint": "eslint . --ext .ts",
     "start": "node -r module-alias/register ./dist --env=production",
     "start:dev": "nodemon",
-    "test": "nodemon --config ./spec/nodemon.json",
-    "heroku-prebuild": "ts-node build.ts && tsc --build tsconfig.prod.json"
+    "test": "nodemon --config ./spec/nodemon.json"
   },
   "nodemonConfig": {
     "watch": [

@@ -1,17 +1,17 @@
-import "reflect-metadata";
-import {createConnection} from "typeorm";
-
-import cookieParser from 'cookie-parser';
-import morgan from 'morgan';
-import path from 'path';
-import helmet from 'helmet';
-
-import express, { NextFunction, Request, Response } from 'express';
-import StatusCodes from 'http-status-codes';
+import 'reflect-metadata';
 import 'express-async-errors';
 
-import BaseRouter from './routes';
+import cookieParser from 'cookie-parser';
+import express, { NextFunction, Request, Response } from 'express';
+import helmet from 'helmet';
+import StatusCodes from 'http-status-codes';
+import morgan from 'morgan';
+import path from 'path';
+import { createConnection } from 'typeorm';
+
 import logger from '@shared/Logger';
+
+import BaseRouter from './routes';
 
 const app = express();
 const { BAD_REQUEST } = StatusCodes;

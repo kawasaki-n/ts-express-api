@@ -82,8 +82,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "spec/**/*.ts", 
-    "ormconfig.ts"
+    "spec/**/*.ts"
   ],
   "exclude": [
     "src/public/"
